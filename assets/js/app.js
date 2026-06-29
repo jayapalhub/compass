@@ -136,6 +136,18 @@
     return data;
   }
 
+  // Sends completed results to the serverless function, which emails the
+  // visitor + Jerome and saves the lead to Attio. Fire-and-forget.
+  async function submitResults(payload) {
+    const resp = await fetch("/submit-results", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!resp.ok) throw new Error("submit-results failed: " + resp.status);
+    return resp.json();
+  }
+
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   // ---------------------------------------------------------------------------
@@ -282,6 +294,21 @@
     fillList("strong-list", strong);
     fillList("weak-list", weak);
 
+    // Everyone who finishes gets their results emailed + saved to the CRM.
+    // Fire-and-forget: never block the results screen on this call.
+    submitResults({
+      email: state.email,
+      company: state.company,
+      score: total,
+      tier: TIERS[tier].name,
+      tierMessage: TIERS[tier].message,
+      strongest: strong.map(function (s) { return { name: s.name, score: s.score }; }),
+      weakest: weak.map(function (s) { return { name: s.name, score: s.score }; }),
+      dimensions: ranked.map(function (r) { return { name: r.name, score: r.score }; }),
+    }).catch(function (e) {
+      console.warn("submit-results failed (continuing anyway):", e && e.message);
+    });
+
     renderResultCtas(tier);
   }
 
@@ -298,45 +325,44 @@
   function renderResultCtas(tier) {
     const wrap = $("result-ctas");
     wrap.innerHTML = "";
-    $("confirm-note").hidden = true;
 
-    function add(html, cls, onClick, attrs) {
-      const a = document.createElement(onClick ? "button" : "a");
+    // Everyone now auto-receives their results by email on completion, so show
+    // the confirmation up front rather than behind a button.
+    const note = $("confirm-note");
+    note.hidden = false;
+    note.textContent = "Your full results are on their way to " + state.email +
+      ". I review each one personally and may follow up.";
+
+    function scrollToTools() { document.getElementById("tools").scrollIntoView(); }
+
+    function addLink(html, cls, href) {
+      const a = document.createElement("a");
       a.className = "btn " + cls;
       a.innerHTML = html;
-      if (onClick) { a.type = "button"; a.addEventListener("click", onClick); }
-      else { for (const k in attrs) a.setAttribute(k, attrs[k]); }
+      a.setAttribute("href", href);
       wrap.appendChild(a);
+      return a;
     }
-
-    function confirmResultsByEmail() {
-      // Email already captured + subscribed on entry; this just confirms.
-      const note = $("confirm-note");
-      note.hidden = false;
-      note.textContent = "Your results are on the way to " + state.email +
-        ". I review each one personally and send a tailored read — keep an eye on your inbox.";
+    function addBtn(html, cls, onClick) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "btn " + cls;
+      b.innerHTML = html;
+      b.addEventListener("click", onClick);
+      wrap.appendChild(b);
+      return b;
     }
 
     if (tier === "ready") {
-      add("See the tool landscape →", "btn--primary", function () {
-        document.getElementById("tools").scrollIntoView();
-      });
-      add("Want my read on matching one to your obligations? Reach out →", "btn--ghost", null,
-        { href: MAILTO });
+      addBtn("See the tool landscape →", "btn--primary", scrollToTools);
+      addLink("Want my read on matching one to your obligations? Reach out →", "btn--ghost", MAILTO);
     } else if (tier === "gaps") {
-      add("Get my full results by email", "btn--primary", confirmResultsByEmail);
-      add("Want to talk through closing these? Reach out →", "btn--ghost", null, { href: MAILTO });
-      add("Curious what's out there anyway? See the tools →", "btn--ghost", function () {
-        document.getElementById("tools").scrollIntoView();
-      });
+      addLink("Want to talk through closing these? Reach out →", "btn--primary", MAILTO);
+      addBtn("Curious what's out there anyway? See the tools →", "btn--ghost", scrollToTools);
     } else { // notready
-      add("Get my full results by email", "btn--primary", confirmResultsByEmail);
-      add("Reach out →", "btn--ghost", null, { href: MAILTO });
-      add("See the tool landscape →", "btn--ghost", function () {
-        document.getElementById("tools").scrollIntoView();
-      });
-      // de-emphasize the tool link
-      wrap.lastChild.style.opacity = "0.7";
+      addLink("Reach out →", "btn--primary", MAILTO);
+      const t = addBtn("See the tool landscape →", "btn--ghost", scrollToTools);
+      t.style.opacity = "0.7"; // de-emphasized
     }
   }
 

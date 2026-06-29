@@ -15,7 +15,8 @@ one Cloudflare Pages Function that subscribes emails to Beehiiv.
 ├── data/
 │   └── tools.json          # EDIT THIS to update tools + the "Last reviewed" date
 ├── functions/
-│   └── subscribe.js        # POST /subscribe → Beehiiv (reads BEEHIIV_API_KEY)
+│   ├── subscribe.js        # POST /subscribe → Beehiiv (reads BEEHIIV_API_KEY)
+│   └── submit-results.js   # POST /submit-results → Resend email + Attio CRM
 ├── _headers                # basic security headers
 └── .gitignore
 ```
@@ -53,13 +54,32 @@ npx serve .
 There is no build step — Cloudflare serves the files as-is and auto-detects the
 `functions/` directory.
 
-## Secret: BEEHIIV_API_KEY
+## Secrets (Cloudflare → Settings → Variables and Secrets → Production)
 
-In the Cloudflare Pages project → **Settings → Environment variables → Production**
-(and Preview if you want it there too), add an **encrypted** variable named exactly
-`BEEHIIV_API_KEY` with your Beehiiv API key as the value. **Redeploy** after adding
-it (env changes only take effect on a new deployment). The key is never sent to the
-browser and never committed.
+Add each as an **encrypted** variable, then **redeploy** (env changes only take
+effect on a new deployment). None of these are sent to the browser or committed.
 
-Beehiiv Publication ID (`pub_dd357204-...`) is not secret and lives in
-`functions/subscribe.js`.
+| Variable | Used by | Get it from |
+| --- | --- | --- |
+| `BEEHIIV_API_KEY` | `subscribe.js` (newsletter) | Beehiiv → Settings → API |
+| `RESEND_API_KEY`  | `submit-results.js` (emails) | Resend → API Keys |
+| `ATTIO_API_KEY`   | `submit-results.js` (CRM) | Attio → Workspace settings → Developers |
+
+Non-secret config lives in the function files:
+- Beehiiv Publication ID (`pub_dd357204-...`) in `functions/subscribe.js`.
+- `FROM_EMAIL`, `REPLY_TO`, `NOTIFY_EMAIL` at the top of `functions/submit-results.js`.
+
+### Resend domain note
+The results email is sent **from** `assessment@bettersecurity.ai`. In Resend you must
+**verify the `bettersecurity.ai` domain** (add the DNS records it gives you — easy
+since the domain is on Cloudflare) before sending will work. Until the domain is
+verified, emails will fail (the assessment still works; it just won't send mail).
+
+## What happens when someone finishes the assessment
+
+`POST /submit-results` runs three best-effort steps (any one failing never blocks
+the others, and never blocks the visitor's results screen):
+1. Emails the visitor their results (Resend).
+2. Emails Jerome a new-lead notification (Resend).
+3. Upserts the person in Attio (matched by email, so no duplicates) and attaches a
+   note with their score, tier, and dimension breakdown.
