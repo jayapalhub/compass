@@ -45,6 +45,7 @@ export async function onRequestPost(context) {
             is_required: false,
             is_unique: false,
             is_multiselect: false,
+            config: {},
             default_value: null,
             description: "Set automatically from the Compass readiness assessment.",
           },
