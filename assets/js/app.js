@@ -114,6 +114,7 @@
   // ---------------------------------------------------------------------------
   const state = {
     email: "",
+    name: "",
     company: "",
     current: 0,                       // current question index
     answers: new Array(QUESTIONS.length).fill(null), // points per question
@@ -165,6 +166,7 @@
   $("email-form").addEventListener("submit", function (e) {
     e.preventDefault();
     const email = $("email-input").value.trim();
+    const name = $("name-input").value.trim();
     const company = $("company-input").value.trim();
     const err = $("email-error");
 
@@ -176,6 +178,7 @@
     err.textContent = "";
 
     state.email = email;
+    state.name = name;
     state.company = company;
     state.answers = new Array(QUESTIONS.length).fill(null); // fresh start
 
@@ -298,6 +301,7 @@
     // Fire-and-forget: never block the results screen on this call.
     submitResults({
       email: state.email,
+      name: state.name,
       company: state.company,
       score: total,
       tier: TIERS[tier].name,

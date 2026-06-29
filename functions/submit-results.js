@@ -98,6 +98,7 @@ function notifyEmailHtml(d) {
 '<div style="font-family:Helvetica,Arial,sans-serif;max-width:560px;color:' + NAVY + ';">',
   '<h2 style="font-size:18px;">New assessment lead</h2>',
   '<table cellpadding="6" style="font-size:14px;border-collapse:collapse;">',
+    '<tr><td style="color:' + GREY_TX + ';">Name</td><td>' + (d.name ? esc(d.name) : "—") + '</td></tr>',
     '<tr><td style="color:' + GREY_TX + ';">Email</td><td><a href="mailto:' + esc(d.email) + '">' + esc(d.email) + '</a></td></tr>',
     '<tr><td style="color:' + GREY_TX + ';">Company</td><td>' + (d.company ? esc(d.company) : "—") + '</td></tr>',
     '<tr><td style="color:' + GREY_TX + ';">Score</td><td>' + d.score + ' / 36</td></tr>',
@@ -143,6 +144,31 @@ async function sendEmail(env, to, subject, html) {
   if (!resp.ok) throw new Error("resend status " + resp.status);
 }
 
+function dimSummary(list) {
+  return list.map(function (x) { return x.name + " (" + x.score + "/6)"; }).join(", ");
+}
+
+function attioValues(d) {
+  const values = {
+    email_addresses: [{ email_address: d.email }],
+    compass_score: [{ value: d.score }],
+    compass_tier: [{ value: d.tier }],
+    compass_strongest: [{ value: dimSummary(d.strongest) }],
+    compass_gaps: [{ value: dimSummary(d.weakest) }],
+    compass_source: [{ value: "Compass assessment" }],
+  };
+  if (d.company) values.compass_company = [{ value: d.company }];
+  if (d.name) {
+    const parts = d.name.split(" ");
+    values.name = [{
+      first_name: parts[0] || d.name,
+      last_name: parts.length > 1 ? parts.slice(1).join(" ") : "",
+      full_name: d.name,
+    }];
+  }
+  return values;
+}
+
 async function saveToAttio(env, d) {
   // 1) Upsert the person by email (no duplicates on repeat assessments)
   const up = await fetch(
@@ -153,9 +179,7 @@ async function saveToAttio(env, d) {
         Authorization: "Bearer " + env.ATTIO_API_KEY,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        data: { values: { email_addresses: [{ email_address: d.email }] } },
-      }),
+      body: JSON.stringify({ data: { values: attioValues(d) } }),
     }
   );
   if (!up.ok) throw new Error("attio upsert status " + up.status);
@@ -197,6 +221,7 @@ export async function onRequestPost(context) {
 
   const d = {
     email: (p && typeof p.email === "string" ? p.email : "").trim(),
+    name: (p && typeof p.name === "string" ? p.name : "").trim(),
     company: (p && typeof p.company === "string" ? p.company : "").trim(),
     score: Number(p && p.score) || 0,
     tier: String((p && p.tier) || ""),
