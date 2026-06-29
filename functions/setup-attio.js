@@ -56,7 +56,9 @@ export async function onRequestPost(context) {
       } else if (resp.status === 409) {
         summary.push({ slug: attr.api_slug, status: "already_exists" });
       } else {
-        summary.push({ slug: attr.api_slug, status: "error " + resp.status });
+        let detail = "";
+        try { detail = await resp.text(); } catch (e) {}
+        summary.push({ slug: attr.api_slug, status: "error " + resp.status, detail: detail.slice(0, 300) });
       }
     } catch (e) {
       summary.push({ slug: attr.api_slug, status: "error", message: e && e.message });
