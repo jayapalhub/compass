@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Better Security · Compass — AI Governance Readiness</title>
+  <meta name="description" content="Find out where you really stand on AI governance in 3 minutes, and browse the tools that actually come up in real decisions. A tool enforces governance you've designed — it doesn't design it for you." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- 1. Nav -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="#top">Better Security <span class="sep">·</span> Compass</a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#assessment">Assessment</a>
+        <a href="#tools">Tools</a>
+        <a href="#newsletter">Newsletter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- 2. Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1>Most organizations shop for an AI governance tool before they know what they need.</h1>
+        <p class="hero__sub">Find out where you really stand, in 3 minutes.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#assessment">Take the Readiness Assessment →</a>
+          <a class="link-quiet" href="#tools">Browse the tool landscape ↓</a>
+        </div>
+        <div class="hero__thesis-wrap">
+          <hr class="hero__divider" />
+          <p class="hero__thesis">A tool enforces governance you've designed. It doesn't design it for you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Tool Landscape -->
+    <section class="section section--alt" id="tools">
+      <div class="container">
+        <p class="eyebrow">The Landscape</p>
+        <h2>The AI Governance Tool Landscape</h2>
+        <p class="section__sub">The tools that actually come up in real decisions.</p>
+        <p class="freshness">Reviewed and updated regularly · Last reviewed: <span id="last-reviewed">…</span></p>
+
+        <div class="filters">
+          <div class="filter-group">
+            <label for="filter-category">Category</label>
+            <select id="filter-category"><option value="">All categories</option></select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-buyer">Target Buyer</label>
+            <select id="filter-buyer"><option value="">All buyers</option></select>
+          </div>
+          <span class="results-count" id="results-count"></span>
+        </div>
+
+        <div class="tool-grid" id="tool-grid" aria-live="polite"></div>
+
+        <div class="refunnel">
+          <p>Not sure which fits? Most organizations benefit from getting the foundation right first.</p>
+          <a class="btn btn--primary" href="#assessment">Take the Readiness Assessment →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. The Assessment -->
+    <section class="section" id="assessment">
+      <div class="container">
+        <div class="assessment-shell">
+
+          <!-- 4a. Email capture -->
+          <div class="screen is-active" id="screen-email">
+            <p class="eyebrow">Readiness Assessment</p>
+            <h2>The AI Governance Readiness Assessment</h2>
+            <p>12 questions. About 3 minutes. You'll get a tailored read on where your gaps are and whether you're ready to evaluate tools yet.</p>
+            <form id="email-form" novalidate>
+              <div class="field">
+                <label for="email-input">Where should we send your results?</label>
+                <input type="email" id="email-input" name="email" autocomplete="email" placeholder="you@company.com" required />
+              </div>
+              <div class="field">
+                <label for="company-input">Company <span class="optional">(optional)</span></label>
+                <input type="text" id="company-input" name="company" autocomplete="organization" placeholder="Acme Inc." />
+              </div>
+              <p class="form-error" id="email-error" role="alert"></p>
+              <button type="submit" class="btn btn--primary btn--block" id="start-btn">Start the Assessment →</button>
+              <p class="smallprint">No spam. Your results plus the occasional plain-language note on AI governance.</p>
+            </form>
+          </div>
+
+          <!-- 4b. Questions (rendered by JS) -->
+          <div class="screen" id="screen-question">
+            <div class="progress-head">
+              <span class="qcount" id="q-count"></span>
+              <span class="dim" id="q-dim"></span>
+            </div>
+            <div class="progress-bar"><div class="progress-bar__fill" id="progress-fill"></div></div>
+            <div class="dots" id="dots" aria-hidden="true"></div>
+
+            <p class="q-text" id="q-text"></p>
+            <div class="options" id="q-options" role="group" aria-label="Answer options"></div>
+
+            <div class="q-nav">
+              <button type="button" class="btn-back" id="back-btn">← Back</button>
+            </div>
+          </div>
+
+          <!-- 4c. Results -->
+          <div class="screen" id="screen-results">
+            <p class="eyebrow">Your Results</p>
+            <h2 class="result-tier" id="result-tier"></h2>
+            <p class="result-score" id="result-score"></p>
+            <div class="score-bar"><div class="score-bar__fill" id="score-fill"></div></div>
+            <p class="result-message" id="result-message"></p>
+
+            <div class="dim-cols">
+              <div class="strong-col">
+                <h4>Your strongest areas</h4>
+                <ul id="strong-list"></ul>
+              </div>
+              <div class="weak-col">
+                <h4>Where the gaps are</h4>
+                <ul id="weak-list"></ul>
+              </div>
+            </div>
+
+            <p class="wedge-restate">A tool enforces governance you've designed. It doesn't design it for you.</p>
+
+            <div class="result-ctas" id="result-ctas"></div>
+            <p class="confirm-note" id="confirm-note" hidden></p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. About -->
+    <section class="section section--alt" id="about">
+      <div class="container about-card">
+        <p class="eyebrow">Who's behind this</p>
+        <h2>Work with me</h2>
+        <p class="name">Jerome Jayapal · Better Security</p>
+        <p>Independent AI governance and security advisory. I help organizations figure out what they're allowed to do with AI and how to govern it, before they spend a dollar on tooling. 14 years in enterprise security, risk, and third-party governance, now focused entirely on helping organizations get their arms around AI.</p>
+        <div class="about__ctas">
+          <a class="btn btn--primary" href="#assessment">Start with the assessment →</a>
+          <a class="link-quiet" href="mailto:jerome.jayapal@bettersecurity.ai?subject=AI%20governance%20readiness%20%E2%80%94%20let's%20talk">Or reach out directly →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Footer -->
+    <footer class="footer" id="newsletter">
+      <div class="container">
+        <h3>The occasional plain-language note on AI governance.</h3>
+        <form class="footer__signup" id="footer-form" novalidate>
+          <input type="email" id="footer-email" name="email" autocomplete="email" placeholder="you@company.com" aria-label="Email address" required />
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+        <p class="footer__msg" id="footer-msg" role="status"></p>
+
+        <div class="footer__bottom">
+          <span class="brand">Better Security</span>
+          <span>
+            <a href="https://bettersecurity.ai" target="_blank" rel="noopener">bettersecurity.ai</a>
+            &nbsp;·&nbsp;
+            <a href="mailto:jerome.jayapal@bettersecurity.ai">jerome.jayapal@bettersecurity.ai</a>
+            &nbsp;·&nbsp; © <span id="year"></span> Better Security
+          </span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="./assets/js/app.js" defer></script>
+</body>
+</html>

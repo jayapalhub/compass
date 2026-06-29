@@ -1,0 +1,245 @@
+{
+  "last_reviewed": "June 2026",
+  "tools": [
+    {
+      "name": "IBM watsonx.governance",
+      "category": "Standalone AIGP",
+      "target_buyer": "Risk & compliance, AI/ML governance leads (regulated orgs)",
+      "one_liner": "Enterprise AI assurance combining AI-native governance with embedded GRC.",
+      "description": "IBM's governance platform brings together model lifecycle management, risk and compliance workflows, and monitoring under one roof. It is positioned for large, regulated enterprises that already run significant AI estates and want governance tied closely to model operations. Strength is depth and integration with the broader IBM data and AI stack.",
+      "framework_coverage": "EU AI Act, NIST AI RMF, ISO/IEC 42001",
+      "website": "https://www.ibm.com/products/watsonx-governance",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "ServiceNow AI Control Tower",
+      "category": "Standalone AIGP",
+      "target_buyer": "Chief AI Officer, CIO/CTO, risk & security leaders",
+      "one_liner": "Centralized control over any AI agent, model, and identity in one place.",
+      "description": "Built on the ServiceNow platform, AI Control Tower aims to give a single operational view of AI assets, agents, and the identities that use them. It leans on ServiceNow's workflow engine and existing enterprise footprint, making it a natural fit for organizations already standardized on the platform. Emphasis is on inventory, oversight, and operational control rather than standalone policy authoring.",
+      "framework_coverage": "EU AI Act, NIST AI RMF, ISO/IEC 42001",
+      "website": "https://www.servicenow.com/products/ai-control-tower.html",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "OneTrust AI Governance",
+      "category": "Standalone AIGP",
+      "target_buyer": "AI governance, privacy, security & risk, data teams",
+      "one_liner": "AI governance control plane spanning inventory, risk classification, and runtime.",
+      "description": "OneTrust extends its established privacy and GRC heritage into AI, covering AI system inventory, risk assessment, and ongoing oversight. It appeals to organizations that already run OneTrust for privacy and want AI governance to share the same workflows and records. Coverage is broad across the governance lifecycle.",
+      "framework_coverage": "EU AI Act, NIST AI RMF, ISO/IEC 42001",
+      "website": "https://www.onetrust.com/solutions/ai-governance/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Credo AI",
+      "category": "Standalone AIGP",
+      "target_buyer": "AI governance lead, Chief AI Officer, compliance, CISO",
+      "one_liner": "Governance workflow from intake questionnaire to risk scoring to policy packs.",
+      "description": "Credo AI is a purpose-built governance platform organized around use-case intake, risk assessment, and reusable policy packs mapped to frameworks. It is designed for governance teams operationalizing a program rather than security tooling. Its policy-pack approach makes framework mapping a central feature.",
+      "framework_coverage": "EU AI Act, NIST AI RMF, ISO/IEC 42001",
+      "website": "https://www.credo.ai/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Holistic AI",
+      "category": "Standalone AIGP",
+      "target_buyer": "AI governance lead, compliance, risk, CISO",
+      "one_liner": "Govern every AI system from shadow AI to agentic workflows, full lifecycle.",
+      "description": "Holistic AI covers discovery, risk assessment, and lifecycle governance, with attention to both shadow AI and newer agentic systems. It positions itself as full-lifecycle governance spanning technical and policy concerns. Useful for teams that want discovery and governance under one platform.",
+      "framework_coverage": "EU AI Act, NIST AI RMF, ISO/IEC 42001",
+      "website": "https://www.holisticai.com/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "ModelOp",
+      "category": "Standalone AIGP",
+      "target_buyer": "CIO, Chief AI Officer, model risk management",
+      "one_liner": "Built for the largest regulated AI estates and multi-cloud complexity.",
+      "description": "ModelOp focuses on enterprise-scale model operations and governance across heterogeneous, multi-cloud environments. It is aimed at large organizations with many models and formal model risk management functions. Strength is orchestration and inventory across complex estates.",
+      "framework_coverage": "NIST AI RMF, SR 11-7 (model risk), EU AI Act",
+      "website": "https://www.modelop.com/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Monitaur",
+      "category": "Standalone AIGP",
+      "target_buyer": "Model risk, compliance, actuarial, risk officers",
+      "one_liner": "Policy-to-proof governance with deep insurance and financial-services alignment.",
+      "description": "Monitaur emphasizes traceable, auditable governance that connects policy to evidence, with particular depth in insurance and financial services. It suits regulated organizations that need to demonstrate model behavior and decisions to regulators. Its model risk and actuarial alignment differentiates it.",
+      "framework_coverage": "NIST AI RMF, SR 11-7 (model risk), NAIC, ISO/IEC 42001",
+      "website": "https://www.monitaur.ai/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Truyo",
+      "category": "Standalone AIGP",
+      "target_buyer": "Privacy officers, AI governance boards, compliance, legal",
+      "one_liner": "AI governance with privacy/consent heritage and shadow-AI scanning.",
+      "description": "Truyo brings a privacy and consent-management lineage into AI governance, including shadow-AI discovery and oversight structures such as governance boards. It fits organizations where privacy and AI governance are tightly linked. Discovery and consent heritage are notable strengths.",
+      "framework_coverage": "EU AI Act, NIST AI RMF, US state privacy laws",
+      "website": "https://truyo.com/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Saidot",
+      "category": "Standalone AIGP",
+      "target_buyer": "AI governance lead, compliance, legal, AI teams",
+      "one_liner": "Graph-based governance where info entered once propagates across contexts.",
+      "description": "Saidot uses a graph-based model so that information captured about an AI system can propagate across the contexts where it is relevant, reducing duplicate effort. It is geared toward governance and legal teams managing many interrelated systems and obligations. The data model is its distinguishing feature.",
+      "framework_coverage": "EU AI Act, NIST AI RMF, ISO/IEC 42001",
+      "website": "https://www.saidot.ai/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Relyance AI",
+      "category": "Standalone AIGP",
+      "target_buyer": "Privacy, data governance, CISO, compliance, legal",
+      "one_liner": "Sits at the data + AI intersection, tracking how data moves through AI.",
+      "description": "Relyance AI focuses on the connection between data flows and AI systems, mapping how data moves into and through AI to support privacy and governance. It appeals to organizations where data lineage and AI governance need to be reconciled. Data-context awareness is its core strength.",
+      "framework_coverage": "EU AI Act, GDPR, NIST AI RMF",
+      "website": "https://www.relyance.ai/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Trustible",
+      "category": "Standalone AIGP",
+      "target_buyer": "AI governance/strategy leads, legal/GC, compliance",
+      "one_liner": "Governance that accelerates intake, plus continuously updated risk intelligence.",
+      "description": "Trustible combines governance workflows with curated, continuously updated regulatory and risk intelligence to speed up intake and decision-making. It is aimed at governance and legal teams that want help staying current with a shifting landscape. Its intelligence layer is a differentiator.",
+      "framework_coverage": "EU AI Act, NIST AI RMF, ISO/IEC 42001",
+      "website": "https://trustible.ai/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Enzai",
+      "category": "Standalone AIGP",
+      "target_buyer": "AI governance lead, compliance, risk, legal",
+      "one_liner": "Governance embedded in everyday AI workflows with broad framework coverage.",
+      "description": "Enzai provides governance designed to fit into the day-to-day workflows of teams building and adopting AI, with broad framework mapping. It targets organizations that want governance to be operational rather than a separate compliance exercise. Breadth of framework coverage is emphasized.",
+      "framework_coverage": "EU AI Act, NIST AI RMF, ISO/IEC 42001",
+      "website": "https://www.enz.ai/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Modulos",
+      "category": "Standalone AIGP",
+      "target_buyer": "AI governance lead, ISO 42001 / EU AI Act owners",
+      "one_liner": "Markets itself as the first ISO 42001-certified AI governance platform.",
+      "description": "Modulos positions its platform around certified compliance, highlighting ISO/IEC 42001 and EU AI Act readiness. It suits organizations pursuing formal certification or structured conformity programs. Its certification posture is its main selling point.",
+      "framework_coverage": "ISO/IEC 42001, EU AI Act, NIST AI RMF",
+      "website": "https://www.modulos.ai/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Cranium AI",
+      "category": "AI Security + Governance",
+      "target_buyer": "CISO / security, AI governance, compliance",
+      "one_liner": "End-to-end AI security and governance with automated compliance mapping.",
+      "description": "Cranium AI blends AI security with governance, covering AI asset discovery, security posture, and automated mapping to compliance frameworks. It speaks primarily to security teams who own AI risk. The security-plus-governance combination is its angle.",
+      "framework_coverage": "NIST AI RMF, MITRE ATLAS, EU AI Act",
+      "website": "https://cranium.ai/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "WitnessAI",
+      "category": "AI Security + Governance",
+      "target_buyer": "CISO / security and AI governance teams",
+      "one_liner": "Governs all AI activity, classifying by intent across thousands of apps and agents.",
+      "description": "WitnessAI observes and governs AI usage across many applications and agents, classifying activity by intent to apply policy. It is built for security teams managing real-time AI use rather than document-based governance. Runtime visibility and intent classification stand out.",
+      "framework_coverage": "NIST AI RMF; runtime policy enforcement",
+      "website": "https://witness.ai/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Zenity",
+      "category": "AI Security + Governance",
+      "target_buyer": "CISO / security and AppSec teams",
+      "one_liner": "Agent-less security for enterprise copilots, low-code, and AI agents.",
+      "description": "Zenity secures the layer where copilots, low-code platforms, and AI agents operate, using an agent-less approach to discover and govern them. It is aimed at security and AppSec teams worried about agentic and citizen-developer risk. Coverage of copilots and low-code is its niche.",
+      "framework_coverage": "OWASP (LLM/agent), NIST AI RMF",
+      "website": "https://zenity.io/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Lasso Security",
+      "category": "AI Security + Governance",
+      "target_buyer": "CISO / security teams",
+      "one_liner": "End-to-end GenAI security with strong shadow-AI discovery.",
+      "description": "Lasso Security focuses on securing generative AI usage end to end, with particular strength in discovering shadow AI across an organization. It is a security-first tool for teams trying to get visibility and control over GenAI adoption. Shadow-AI discovery is its headline capability.",
+      "framework_coverage": "OWASP LLM Top 10, NIST AI RMF",
+      "website": "https://www.lasso.security/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Credal AI",
+      "category": "AI Security + Governance",
+      "target_buyer": "CISO / security, platform & data teams, public sector",
+      "one_liner": "Permission-preserving control plane for enterprise AI agents.",
+      "description": "Credal AI provides a control plane for enterprise AI that preserves existing permissions and access controls as data flows into AI systems and agents. It targets security, platform, and public-sector teams that need strict access fidelity. Permission preservation is its defining feature.",
+      "framework_coverage": "NIST AI RMF, SOC 2; access-control alignment",
+      "website": "https://www.credal.ai/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Singulr",
+      "category": "AI Security + Governance",
+      "target_buyer": "CISO/security, CIO/IT, privacy/risk & compliance",
+      "one_liner": "Closed-loop system connecting governance, runtime enforcement, and assurance.",
+      "description": "Singulr aims to close the loop between policy, runtime enforcement, and assurance so governance decisions are actually enforced and evidenced. It speaks to organizations that want governance and security to operate as one connected system. The closed-loop framing is its differentiator.",
+      "framework_coverage": "NIST AI RMF, EU AI Act, ISO/IEC 42001",
+      "website": "https://singulr.ai/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Vanta",
+      "category": "GRC + AI",
+      "target_buyer": "GRC/compliance, CISOs, security leaders (mid-market + enterprise)",
+      "one_liner": "Compliance automation with dedicated AI-framework products and evidence reuse.",
+      "description": "Vanta is a widely adopted compliance automation platform that has added AI-specific frameworks and controls on top of its evidence-collection engine. It fits organizations already using Vanta for SOC 2 and similar that want to extend into AI governance. Evidence reuse across frameworks is a key benefit.",
+      "framework_coverage": "ISO/IEC 42001, NIST AI RMF, SOC 2, ISO 27001",
+      "website": "https://www.vanta.com",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Drata",
+      "category": "GRC + AI",
+      "target_buyer": "Security leaders/CISOs, GRC, compliance",
+      "one_liner": "Continuous compliance automation now adding AI-agent discovery and controls.",
+      "description": "Drata provides continuous compliance automation and has been extending into AI with agent discovery and AI-specific controls. It appeals to security and GRC teams that want AI governance to live alongside their existing compliance program. Continuous monitoring is its foundation.",
+      "framework_coverage": "ISO/IEC 42001, NIST AI RMF, SOC 2, ISO 27001",
+      "website": "https://drata.com",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Collibra AI Governance",
+      "category": "Data Governance",
+      "target_buyer": "Data, AI, and risk/governance teams (CDO, model risk)",
+      "one_liner": "AI traceability from data to agent on a unified data-governance system of record.",
+      "description": "Collibra extends its data-governance system of record to AI, providing traceability from underlying data through models to agents. It suits data-mature organizations where the CDO function anchors governance. Data-to-AI lineage on a single catalog is its strength.",
+      "framework_coverage": "EU AI Act, NIST AI RMF; data-lineage alignment",
+      "website": "https://www.collibra.com/products/ai-governance",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "BigID",
+      "category": "Data Governance",
+      "target_buyer": "Security, privacy, data governance, risk (CISO/CPO/CDO)",
+      "one_liner": "Data-aware AI governance connecting AI assets to sensitive data and access.",
+      "description": "BigID brings deep data discovery and classification to AI governance, linking AI assets to the sensitive data and access they involve. It fits organizations whose AI risk is primarily a data-exposure problem. Sensitive-data awareness is its core differentiator.",
+      "framework_coverage": "EU AI Act, GDPR, NIST AI RMF; data-discovery alignment",
+      "website": "https://bigid.com/ai-security-governance/",
+      "reviewed": "June 2026"
+    },
+    {
+      "name": "Fiddler AI",
+      "category": "AI Eval / Observability",
+      "target_buyer": "Enterprise ML/AI, MLOps, risk & compliance",
+      "one_liner": "Observability and guardrails control plane for AI systems and agents.",
+      "description": "Fiddler AI focuses on monitoring, observability, and guardrails for AI and ML systems in production, including LLM and agent behavior. It is aimed at ML/MLOps teams that need to watch model and application performance and safety over time. Operational observability is its specialty.",
+      "framework_coverage": "NIST AI RMF; model monitoring & guardrails",
+      "website": "https://www.fiddler.ai/",
+      "reviewed": "June 2026"
+    }
+  ]
+}
