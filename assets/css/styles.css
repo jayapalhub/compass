@@ -297,8 +297,8 @@ select {
 @media (max-width: 720px) {
   .section { padding: 56px 0; }
   .hero { padding: 48px 0 0; }
-  .hero__grid { grid-template-columns: 1fr; gap: 12px; }
-  .hero__compass svg { max-width: 230px; margin-top: 16px; }
+  .hero__grid { grid-template-columns: 1fr; gap: 0; }
+  .hero__compass { display: none; }
   .hero__thesis-wrap { margin-top: 32px; }
   .hero__marquee { margin-top: 28px; }
   .assessment-shell { padding: 26px 20px; }
